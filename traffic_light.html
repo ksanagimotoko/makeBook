@@ -7,7 +7,8 @@
     <style>
         #square{
             display: flex;
-            position: relative;
+            position: absolute;
+            z-index: -2;
             justify-content: space-around;
             align-items: center;
             width: 200px;
@@ -17,31 +18,61 @@
         }
         #circle{
             position: relative;
-            z-index: 1;
             width: 40px;
             height: 40px;
             border-radius: 50%;
+        }
+
+        #cover{
+            position: absolute;
+            z-index: -1;
+            left: -2.5px;
+            top: -3px;
+            width: 45px;
+            height: 30px;
+            border: 2px;
+            border-radius: 100px 100px 0px 0px;
+            background-color: rgb(83, 83, 83);
+        }
+
+        #image_{
+            display: none;
         }
 
     </style>
 </head>
 <body>
      <div id="square">
-       <div id="circle" style='background-color: red;'></div>
-       <div id="circle" style='background-color: yellow;'></div>
-       <div id="circle" style='background-color: green;'></div>
-       <div id="circle" style='background-color: gray;'></div>
+       <div id="circle" style='background-color: red;'>
+            <div id="cover"></div>
+       </div>
+       <div id="circle" style='background-color: yellow;'>
+            <div id="cover"></div>
+       </div>
+       <div id="circle" style='background-color: green;'>
+            <div id="cover"></div>
+       </div>
+       <div id="circle" style='background-color: gray;'>
+            <div id="image_"> <img src="ima/arrows.png" width="40px" style="transform: rotate(90deg);">
+            </div>
+            <div id="cover"></div>
+       </div>
 
      </div>
     
 
-<script>
+<script type="text/javascript">
 
-// document.getElementById('square').addEventListener('click', ()=>{
-    window.addEventListener('click', ()=>{
-   console.log('aaaaaaaaa ');
+    function getshow() {
+        alert("display : ")
+        document.getElementById(image_).style.display="";
+    }
 
-});
+    function gethide(){
+        alert("display : none ")
+        document.getElementById(image_).style.display="none";    
+    }
+
 
 </script>
 
