@@ -35,7 +35,7 @@
             background-color: rgb(83, 83, 83);
         }
 
-        #image_{
+        .hide{
             display: none;
         }
 
@@ -53,17 +53,32 @@
             <div id="cover"></div>
        </div>
        <div id="circle" style='background-color: gray;'>
-            <div id="image_"> <img src="ima/arrows.png" width="40px" style="transform: rotate(90deg);">
-            </div>
-            <div id="cover"></div>
+        <div id="cover"></div>
+            <img id="image_arrow" src="ima/arrows.png" class="hidden" width="40px" style="transform: rotate(90deg);">
        </div>
 
      </div>
     
 
-<script >
+<script>
+var ima_list = ["", "ima/arrows.png"];
 
+var currentIndex = 0;
+  var imageElement = document.getElementById('image_arrow');
 
+  function showNext() {
+    currentIndex = (currentIndex + 1) % ima_list.length;
+    imageElement.src = ima_list[currentIndex];
+    imageElement.classList.remove('hidden');
+    setTimeout(hide, 2000); 
+  }
+
+  function hide() {
+    imageElement.classList.add('hidden');
+    setTimeout(showNext, 1000); 
+  }
+
+  showNext();
 </script>
 
 
