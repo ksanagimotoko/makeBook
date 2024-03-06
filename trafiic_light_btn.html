@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>traffic_light_v2</title>
+    <style>
+        .traffic_box{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 280px;
+            height: 80px;
+            margin-top: 50px;
+            background-color: black;
+        }
+
+        .light{
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin: 2px;
+            border: 2px solid rgb(58, 57, 57);
+        }
+
+        .red{ background-color: red; }
+        .yellow { background-color: yellow; }
+        .gray { 
+            background-color: gray;
+            visibility: visible;
+         }
+        .green { background-color: green; }
+
+        .btn{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            top: 30px;
+            width: 50px;
+            height: 40px;
+            background-color: pink;
+        }
+
+
+        .gray.off{
+            visibility: hidden;
+        }
+
+        .gray.on{
+            visibility: visible;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="traffic_box">
+        <div class="light red"></div>
+        <div class="light yellow"></div>
+        <div class="light gray">
+            <img id="arrow" 
+            src="ima/arrows.png" 
+            class="hidden" 
+            width="50px" 
+            style="transform: rotate(-90deg);">
+        </div>
+        <div id="light green" class="light"></div>
+
+    
+
+    </div>
+    <div class="btn off"> OFF </div>
+
+    <div class="btn on"> ON </div> 
+
+
+    <script>
+
+
+        let k = document.querySelector('.btn.off');
+            k.addEventListener('click', ()=>{
+                console.log('im clicked ');
+
+                let d = document.querySelector('.light.gray');
+                d.classList.add('off');
+                d.classList.remove('on');
+
+            })
+
+    
+            let g = document.querySelector('.btn.on');
+            g.addEventListener('click', ()=>{
+                console.log('im clicked ');
+
+                let s = document.querySelector('.light.gray');
+                s.classList.add('on');
+                s.classList.remove('off');
+
+
+            })
+
+        function changelight() {
+            var red = document.getElementById('red');
+            var yellow = document.getElementById('yellow');
+            var arrow = document.getElementById('arrow');
+            var green = document.getElementById('green');
+        }
+
+        setTimeout(function () {
+            red.style.backgroundColor = 'red';
+            yellow.style.backgroundColor = 'gray';
+            arrow.style.visibility = 'hidden';
+            green.style.backgroundColor = 'gray';
+        }, 2000);
+
+        setTimeout(function () {
+            red.style.backgroundColor = 'gray';
+            yellow.style.backgroundColor = 'yellow';
+            arrow.style.visibility = 'hidden';
+            green.style.backgroundColor = 'gray';
+        }, 3000);
+
+        setTimeout(function () {
+            red.style.backgroundColor = 'gray';
+            yellow.style.backgroundColor = 'gray';
+            arrow.style.visibility = 'visible';
+            green.style.backgroundColor = 'gray';
+        }, 4000);
+
+        setTimeout(function () {
+            red.style.backgroundColor = 'gray';
+            yellow.style.backgroundColor = 'gray';
+            arrow.style.visibility = 'hidden';
+            green.style.backgroundColor = 'green';
+        }, 5000);
+
+        setTimeout(function () {
+            red.style.backgroundColor = 'gray';
+            yellow.style.backgroundColor = 'gray';
+            arrow.style.visibility = 'hidden';
+            green.style.backgroundColor = 'gray';
+        }, 6000);
+
+    
+        setInterval(changelight, 20000);
+
+        window.onload = changelight;
+
+    </script>
+</body>
+</html>
