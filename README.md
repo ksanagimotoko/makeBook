@@ -21,15 +21,19 @@
 
 ![신호등](ima/ex.png "4구 신호등")
 
- `적색` | `황색` | `녹색` | `우회전` 
- --- | --- | --- | ---
- ON | OFF | OFF | OFF 
- OFF  | blink | OFF | OFF 
- OFF  | OFF | ON | OFF 
- OFF  | OFF | OFF | ON 
+ `적색` | `황색` | `녹색` | `우회전` | `비고`
+ --- | --- | --- | --- | --- 
+ ON | OFF | OFF | OFF | 완료(240306)
+ OFF  | blink | OFF | OFF | 
+ OFF  | OFF | ON | OFF | 완료(240306)
+ OFF  | OFF | OFF | ON | 완료(240306)
 
  1. 적색등 : 녹색등 On/off 시 반대로 off/on 기능
 2. 녹색등 : 우회전등 On/off 시 반대로 off/on 기능
 3. 황색등 : 황색점멸등
 4. 우회전등 : 녹색등 On/off 시 반대로 off/on 기능
+
+### 업데이트 현황
+이후 황색등의 점멸 기능 추가 예정
+
 
