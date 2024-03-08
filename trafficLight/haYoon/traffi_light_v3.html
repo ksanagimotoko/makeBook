@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>traffi_light_v3</title>
+    <style>
+        .car_box {
+            position:relative;
+            left: 200px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            width: 300px;
+            height: 100px;
+            background-color: black;
+            border-radius: 15px;
+        }
+
+        .car_bar {
+            position: absolute;
+            top: 40px;
+            width: 200px;
+            height: 20px;
+            background-color: rgb(67, 67, 67);
+        }
+
+        .light_car {      
+            position: relative;
+            top: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+        }
+
+        .red_lc {background-color: red;}
+        .yellow_lc {background-color: yellow;}
+        .gray_lc {background-color: gray;}
+        .green_lc {background-color: green;}
+
+    </style>
+</head>
+<body>
+    <div class="car_box"> 
+        <div class="light_car red_lc"></div>
+        <div class="light_car yellow_lc"></div>
+        <div class="light_car gray_lc"></div>
+        <div class="light_car green_lc"></div>
+    </div>
+    <div class="car_bar"> </div>
+</body>
+</html>
