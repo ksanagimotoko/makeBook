@@ -11,8 +11,9 @@
             align-items: center;
             width: 280px;
             height: 80px;
-            margin-top: 50px;
+            /* margin-top: 50px; */
             background-color: black;
+            border-radius:15px;
         }
 
         .light{
@@ -32,14 +33,16 @@
         .green { background-color: green; }
 
         .btn{
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            display: inline-block;
             position: relative;
-            top: 30px;
-            width: 50px;
-            height: 40px;
+            top: 20px;
+            left: 45px;
+            text-align: center;
+            line-height: 35px;
+            width: 90px;
+            height: 30px;
             background-color: pink;
+            border-radius: 15px;
         }
 
 
@@ -60,51 +63,61 @@
         <div class="light gray">
             <img id="arrow" 
             src="ima/arrows.png" 
-            class="hidden" 
+            class="hid" 
             width="50px" 
             style="transform: rotate(-90deg);">
         </div>
-        <div id="light green" class="light"></div>
+        <div class="light green" class="light"></div>
 
     
 
     </div>
-    <div class="btn off"> OFF </div>
+    <div class="btn off"> 좌회전 OFF </div>
 
-    <div class="btn on"> ON </div> 
+    <div class="btn on"> 좌회전 ON </div> 
 
 
     <script>
 
+        let momo = document.querySelectorAll('.light');
+          for ( let i = 0; i < momo.length; i++){
+                console.log(momo[i]);
+
+          }
+
+
 
         let k = document.querySelector('.btn.off');
             k.addEventListener('click', ()=>{
-                console.log('im clicked ');
+                console.log('im clicked off');
 
-                let d = document.querySelector('.light.gray');
+                let d = document.querySelector('.light');
                 d.classList.add('off');
                 d.classList.remove('on');
 
-            })
+            });
 
     
             let g = document.querySelector('.btn.on');
             g.addEventListener('click', ()=>{
-                console.log('im clicked ');
+                console.log('im clicked on');
 
-                let s = document.querySelector('.light.gray');
+                let s = document.querySelector('.light');
                 s.classList.add('on');
                 s.classList.remove('off');
 
 
-            })
+            });
+
+
+
 
         function changelight() {
-            var red = document.getElementById('red');
-            var yellow = document.getElementById('yellow');
-            var arrow = document.getElementById('arrow');
-            var green = document.getElementById('green');
-        }
+            let red = document.querySelector('.red');
+            let yellow = document.querySelector('.yellow');
+            let arrow = document.querySelector('.hid');
+            let green = document.querySelector('.green');
+        
 
         setTimeout(function () {
             red.style.backgroundColor = 'red';
@@ -119,6 +132,7 @@
             arrow.style.visibility = 'hidden';
             green.style.backgroundColor = 'gray';
         }, 3000);
+
 
         setTimeout(function () {
             red.style.backgroundColor = 'gray';
@@ -142,9 +156,12 @@
         }, 6000);
 
     
-        setInterval(changelight, 20000);
+        setInterval(changelight, 19000);
+        }
 
         window.onload = changelight;
+
+    
 
     </script>
 </body>
