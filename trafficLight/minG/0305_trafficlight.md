@@ -22,6 +22,18 @@ justify-content: center;
 내부 여백을 모든 방향으로 45  
 * width: 300px;
 요소의 너비를 300으로
+```css
+ .traffic_light{
+            display: flex;
+            background-color: #333;
+            flex-direction: row;
+            justify-content: center;
+            border-radius: 15px;
+            padding: 20px; 
+            width: 300px;
+            justify-content: space-around;
+        }
+```
 ***
 ## light  
 * width: 100px; 
