@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic light Option V2</title>
+    <style>
+        .traffic_light{
+            display: flex;
+            background-color: #333;
+            flex-direction: row;
+            justify-content: center;
+            border-radius: 15px;
+            padding: 20px; 
+            width: 300px;
+            justify-content: space-around;
+        }
+        .light {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin: 10px 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .red{
+            background-color: red;
+        }
+        .yellow {
+            background-color: yellow;
+        }
+        .green {
+            background-color: green;
+        }
+        .orange {
+            background-color: orange;
+        }
+        .option-menu {
+            display: none;
+            position: absolute;
+            top: 165px;
+            left: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 5px;
+            padding: 10px;
+        }
+        .option-menu button {
+            margin-right: 10px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="traffic_light">
+        <div class="light red"></div>
+        <div class="light yellow"></div>
+        <div class="light orange"></div>
+        <div class="light green" >
+    <img src="./image/left.png" class="light green" style="position: relative; top: 30%; left: 50%; transform: translate(-50%, -50%);"/>
+</div>
+
+    </div>
+    <div id="optionMenu" class="option-menu">
+        <button onclick="showAll()">Option 1: Show all lights</button>
+        <button onclick="showThree()">Option 2: Show three lights</button>
+    </div>
+    <button onclick="toggleOptionMenu()" style="position: fixed; top: 120px; left: 20px; width: 50px; height: 50px; border-radius: 50%; background-color: #007bff; color: #fff; font-size: 16px;">Op</button>
+    <script>
+        
+        let lights = document.querySelectorAll('.light');
+        let greenleft = document.querySelector('.light.green');
+        let orangeLight = document.querySelector('.light.orange');
+        let optionMenu = document.getElementById('optionMenu');
+        let optionMenuVisible = false;
+
+        function toggleOptionMenu() {
+            optionMenuVisible = !optionMenuVisible;
+            if (optionMenuVisible) {
+                optionMenu.style.display = 'block';
+            } else {
+                optionMenu.style.display = 'none';
+            }
+        }
+
+        function showAll() {
+            for (let i = 0; i < lights.length; i++) {
+                lights[i].style.display = 'block';
+            }
+            greenleft.style.position = 'relative';
+            flashingEffect();
+            toggleOptionMenu(); // Close option menu
+        }
+
+        function showThree() {
+            for (let i = 0; i < lights.length; i++) {
+                lights[i].style.display = 'none';
+            }
+            document.querySelector('.light.red').style.display = 'block';
+            document.querySelector('.light.yellow').style.display = 'block';
+            document.querySelector('.light.green').style.display = 'block';
+            document.querySelector('.light.green img').style.display = 'block';
+            greenleft.style.position = 'static';
+            flashingEffect();
+            toggleOptionMenu(); // Close option menu
+        }
+    </script>
+</body>
+</html>
