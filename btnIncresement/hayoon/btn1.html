@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>숫자를 올려보자</title>
+    <style>
+        .container {
+            width: 100px;
+            height: 100px;
+            text-align: center;
+        }
+
+    </style>
+
+</head>
+<body>
+    
+    <div class="container">
+        <div class="num"> 0 </div>
+        <button class="btn"> 증가 </button>
+        <button class="res"> 초기화 </button>
+    </div>
+
+    <script>
+
+        document.querySelector('.btn').addEventListener('click', function() {
+            let element = document.querySelector('.num');
+            let set = parseInt(element.textContent);
+            set++;
+            element.textContent = set;
+        });
+
+        document.querySelector('.res').addEventListener('click', function() {
+            let element = document.querySelector('.num');
+            element.textContent = '0';
+        });
+    </script>
+</body>
+</html>
