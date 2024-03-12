@@ -6,7 +6,7 @@
     <title>숫자를 올려보자</title>
     <style>
         .container {
-            width: 100px;
+            width: 200px;
             height: 100px;
             text-align: center;
         }
@@ -19,6 +19,7 @@
     <div class="container">
         <div class="num"> 0 </div>
         <button class="btn"> 증가 </button>
+        <button class="dec"> 감소 </button>
         <button class="res"> 초기화 </button>
     </div>
 
@@ -31,10 +32,18 @@
             element.textContent = set;
         });
 
+        document.querySelector('.dec').addEventListener('click', function() {
+            let element = document.querySelector('.num');
+            let set = parseInt(element.textContent);
+            set--;
+            element.textContent = set;
+        });
+
         document.querySelector('.res').addEventListener('click', function() {
             let element = document.querySelector('.num');
             element.textContent = '0';
         });
+
     </script>
 </body>
 </html>
