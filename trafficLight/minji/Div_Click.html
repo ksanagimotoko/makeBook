@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Div_Click</title>
+    <style>
+        body {
+            background-color: black;
+        }
+        .traffic_light {
+            display: flex;
+            background-color: #d4a5a5;
+            flex-direction: row;
+            justify-content: center;
+            border-radius: 15px;
+            padding: 20px; 
+            width: 300px;
+            justify-content: space-around;
+        }
+        .light {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin: 10px 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            position: relative; /* 상대 위치 설정 */
+        }
+        .red {
+            background-color: red;
+        }
+        .yellow {
+            background-color: yellow;
+        }
+        .green {
+            background-color: green;
+        }
+        .orange {
+            background-color: orange;
+        }
+        .option-menu {
+            display: none;
+            position: absolute;
+            top: 165px;
+            left: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 5px;
+            padding: 10px;
+        }
+        .option-menu button {
+            margin-right: 10px;
+        }
+        .option-menu2 {
+            display: flex;
+            justify-content: space-around; /* 가로 정렬 */
+            align-items: center; /* 세로 가운데 정렬 */
+        }
+        .option-menu2 button {
+            margin-right: 10px;
+        }
+        .off::after {
+            content: ''; /* 회색 원 요소 생성 */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #ccc;
+        }
+        
+    </style>
+</head>
+<body>
+
+<div class="traffic_light">
+    <div class="light red"></div>
+    <div class="light yellow"></div>
+    <div class="light orange"></div>
+    <div class="light green">
+        <img src="./image/left.png" class="light green" style="position: relative; top: 30%; left: 50%; transform: translate(-50%, -50%);"/>
+    </div>
+</div>
+
+<div id="TopButton" style="position: fixed; top: 120px; left: 20px;">
+    <button onclick="toggleOptionMenu()" style="width: 50px; height: 50px; border-radius: 50%; background-color: #007bff; color: #fff; font-size: 16px;">Op</button>
+</div>
+<div id="optionMenu" class="option-menu">
+    <button onclick="showAll()">Option 1: Show all lights</button>
+    <button onclick="showThree()">Option 2: Show three lights</button>
+</div>
+
+<div id="SecondButton" style="position: fixed; top: 200px; left: 20px;">
+    <button onclick="changeBackgroundColor()" style="width: 50px; height: 50px; border-radius: 50%; background-color: #007bff; color: #fff; font-size: 16px;">2p</button>
+    <div style="position: relative;"> 
+        <button onclick="refreshPage()" >새로고침</button>
+        <div>
+            <button onclick="changeTextColor()">색변환</button>
+        </div>
+    </div>
+</div>
+<script>
+    let lights = document.querySelectorAll('.light');
+    let optionMenu = document.getElementById('optionMenu');
+    let optionMenuVisible = false;
+
+    function toggleOptionMenu() {
+        optionMenuVisible = !optionMenuVisible;
+        if (optionMenuVisible) {
+            optionMenu.style.display = 'block';
+        } else {
+            optionMenu.style.display = 'none';
+        }
+    }
+
+    function showAll() {
+        for (let i = 0; i < lights.length; i++) {
+            lights[i].style.display = 'block';
+        }
+        flashingEffect();
+        toggleOptionMenu(); // Close option menu
+    }
+
+    function showThree() {
+        for (let i = 0; i < lights.length; i++) {
+            lights[i].style.display = 'none';
+        }
+        document.querySelector('.light.red').style.display = 'block';
+        document.querySelector('.light.yellow').style.display = 'block';
+        document.querySelector('.light.green').style.display = 'block';
+        document.querySelector('.light.green img').style.display = 'block';
+        flashingEffect();
+        toggleOptionMenu(); // Close option menu
+    }
+
+    let optionMenu2 = document.getElementById('optionMenu2');
+    let optionMenu2Visible = false;
+
+    function toggleOptionMenu2() {
+        optionMenu2Visible = !optionMenu2Visible;
+        if (optionMenu2Visible) {
+            optionMenu2.style.display = 'block';
+        } else {
+            optionMenu2.style.display = 'none';
+        }
+    }
+
+    function changeBackgroundColor() {
+        document.querySelector('body').style.backgroundColor = 'gray'; // Change background color to gray
+    }
+
+    function refreshPage() {
+        window.location.reload(); // Refresh the page
+    }
+
+    function changeTextColor() {
+        let secondButton = document.querySelector('#SecondButton button');
+        secondButton.style.color = 'black'; // Change text color of the '2p' button
+    }
+
+    function flashingEffect() {
+        let currentIndex = 0;
+        setInterval(function() {
+            lights[currentIndex].classList.add('off');
+            currentIndex = (currentIndex + 1) % lights.length;
+            lights[currentIndex].classList.remove('off');
+            lights[currentIndex].querySelector('.off').style.display = 'block'; // 추가: 회색 원 표시
+        }, 1000);
+    }
+</script>
+</body>
+</html>
