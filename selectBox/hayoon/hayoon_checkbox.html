@@ -61,14 +61,15 @@
             let selectBox = document.querySelectorAll('input[name="options"]:checked');
             let selectedCount = selectBox.length;
 
-            if (selectedCount > 2) {
-                alert("2개만 선택해주세요!");
+            if (selectedCount === 0) {
+                alert("선택해주세요!");
                 return false;
-            } else if (selectedCount === 2) {
-                alert("감사합니다!");
+            } else if (selectedCount > 2) {
+                alert("2개까지만 선택 가능합니다.");
+                return false;
             } else {
-                alert("적어도 2개를 선택해주세요!");
-                return false;
+                alert("감사합니다!");
+                return true;
             }
         }
     </script>
