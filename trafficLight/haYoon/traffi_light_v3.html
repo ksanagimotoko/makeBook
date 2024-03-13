@@ -35,19 +35,98 @@
 
         .red_lc {background-color: red;}
         .yellow_lc {background-color: yellow;}
-        .gray_lc {background-color: gray;}
+        .gray_lc {
+            background-color: gray;
+            visibility: visible;
+        }
         .green_lc {background-color: green;}
-
+        
+        .btn {
+            background-color: palevioletred;
+            color: white;
+            text-align: center;
+            line-height: 45px;
+            display: inline-block;
+            width: 80px;
+            height: 40px;
+            position: relative;
+            left: 310px;
+            top: 10px;
+            border-radius: 8px;
+        }
     </style>
 </head>
 <body>
-    <div class="lll"></div>
     <div class="car_box"> 
         <div class="light_car red_lc"></div>
         <div class="light_car yellow_lc"></div>
-        <div class="light_car gray_lc"></div>
+        <div class="light_car gray_lc">
+            <img class="hide" src="ima/arrows.png" width="60px" style="transform: rotate(-90deg);">
+        </div>
         <div class="light_car green_lc"></div>
     </div>
     <div class="car_bar"> </div>
+    <div class="btn on"> START </div>
+    <div class="btn off"> END </div>
+
+    <script>
+
+        function changlight() {
+            let c_red = document.querySelector('.red');
+            let c_yellow = document.querySelector('yellow');
+            let arrow = document.querySelector('.hide');
+            let c_green = document.querySelector('.green');
+        }
+
+             setTimeout (function () {
+                c_red.style.backgrondColor = 'red';
+                c_yellow.style.backgrondColor = 'gray';
+                arrow.style.visibility = 'hidden';
+                c_green.style.backgrondColor = 'gray';
+            }, 2000);
+
+            setTimeout (function () {
+                c_red.style.backgrondColor = 'gray';
+                c_yellow.style.backgrondColor = 'yellow';
+                arrow.style.visibility = 'hidden';
+                c_green.style.backgrondColor = 'gray';
+            }, 3000);
+
+            setTimeout (function () {
+                c_red.style.backgrondColor = 'gray';
+                c_yellow.style.backgrondColor = 'gray';
+                arrow.style.visibility = 'visible';
+                c_green.style.backgrondColor = 'gray';
+            }, 4000);
+
+            setTimeout (function () {
+                c_red.style.backgrondColor = 'gray';
+                c_yellow.style.backgrondColor = 'gray';
+                arrow.style.visibility = 'hidden';
+                c_green.style.backgrondColor = 'green';
+            }, 5000);
+
+            setTimeout (function () {
+                c_red.style.backgrondColor = 'gray';
+                c_yellow.style.backgrondColor = 'gray';
+                arrow.style.visibility = 'hidden';
+                c_green.style.backgrondColor = 'gray';
+            }, 6000);
+
+        }
+
+        let A = document.querySelector('.btn.on');
+        
+        function A
+
+        /*let A = document.querySelector('.btn.on');
+            A.addEventListener('click', () => {
+                console.log('clicked on'); */
+
+                
+           
+            
+
+    </script>
 </body>
 </html>
