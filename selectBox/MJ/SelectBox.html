@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SelectBox</title>
+    <style>
+        /* You can keep your existing styles here */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <label for="Q1"; style="font-size: larger;">좋아하는 색 선택하세요(최대 2개)</label><br><br>
+        <input type="checkbox" id="Q1_1" name="Q1[]" value="빨강" onchange="limitCheckboxes()">
+        <label for="Q1_1">빨강</label><br>
+        <input type="checkbox" id="Q1_2" name="Q1[]" value="파랑" onchange="limitCheckboxes()">
+        <label for="Q1_2">파랑</label><br>
+        <input type="checkbox" id="Q1_3" name="Q1[]" value="초록" onchange="limitCheckboxes()">
+        <label for="Q1_3">초록</label><br>
+        <input type="checkbox" id="Q1_4" name="Q1[]" value="흰색" onchange="limitCheckboxes()">
+        <label for="Q1_4">흰색</label><br>
+        <input type="checkbox" id="Q1_5" name="Q1[]" value="검정" onchange="limitCheckboxes()">
+        <label for="Q1_5">검정</label><br><br>
+    </div>
+    <div class="container"; style="font-size: larger;">
+        <label for="Q2">의견:</label><br>
+        <textarea id="Q2" name="Q2" rows="4" cols="50"></textarea>
+    </div>
+    <div class="container">
+        <button type="button" class="btn btn-outline-success" onclick="showResults()">제출</button>
+    </div>
+
+    <div id="results" class="container" style="display: none; margin-top: 20px;">
+        <h2>결과</h2>
+        <p id="Q1Result"></p>
+        <p id="Q2Result"></p>
+    </div>
+
+    <script>
+        function limitCheckboxes() {
+            var checkboxes = document.querySelectorAll('input[name="Q1[]"]:checked');
+            if (checkboxes.length > 2) {
+                alert("최대 2개까지 선택 가능합니다.");
+                checkboxes.forEach(function(checkbox) {
+                    checkbox.checked = false;
+                });
+            }
+        }
+
+        function showResults() {
+            var Q1 = document.querySelectorAll('input[name="Q1[]"]:checked');
+            var Q2 = document.getElementById("Q2").value;
+            
+            var Q1Values = Array.from(Q1).map(function(color) {
+                return color.value;
+            }).join(", ");
+
+            document.getElementById("Q1Result").innerText = "좋아하는 색: " + Q1Values;
+            document.getElementById("Q2Result").innerText = "의견: " + Q2;
+
+            document.getElementById("results").style.display = "block";
+        }
+    </script>
+</body>
+</html>
