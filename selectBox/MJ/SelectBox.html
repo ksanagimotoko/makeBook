@@ -11,27 +11,51 @@
 </head>
 <body>
     <div class="container">
-        <label for="Q1"; style="font-size: larger;">좋아하는 색 선택하세요(최대 2개)</label><br><br>
-        <input type="checkbox" id="Q1_1" name="Q1[]" value="빨강" onchange="limitCheckboxes()">
-        <label for="Q1_1">빨강</label><br>
-        <input type="checkbox" id="Q1_2" name="Q1[]" value="파랑" onchange="limitCheckboxes()">
-        <label for="Q1_2">파랑</label><br>
-        <input type="checkbox" id="Q1_3" name="Q1[]" value="초록" onchange="limitCheckboxes()">
-        <label for="Q1_3">초록</label><br>
-        <input type="checkbox" id="Q1_4" name="Q1[]" value="흰색" onchange="limitCheckboxes()">
-        <label for="Q1_4">흰색</label><br>
-        <input type="checkbox" id="Q1_5" name="Q1[]" value="검정" onchange="limitCheckboxes()">
-        <label for="Q1_5">검정</label><br><br>
+        <div class="row">
+            <div class="col-12 text-center">
+                <label for="Q1" style="font-size: larger;">좋아하는 색 선택하세요(최대 2개)</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 text-center">
+                <input type="checkbox" id="Q1_1" name="Q1[]" value="빨강" onchange="limitCheckboxes()">
+                <label for="Q1_1">빨강</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 text-center">
+                <input type="checkbox" id="Q1_2" name="Q1[]" value="파랑" onchange="limitCheckboxes()">
+                <label for="Q1_2">파랑</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 text-center">
+                <input type="checkbox" id="Q1_3" name="Q1[]" value="초록" onchange="limitCheckboxes()">
+                <label for="Q1_3">초록</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 text-center">
+                <input type="checkbox" id="Q1_4" name="Q1[]" value="흰색" onchange="limitCheckboxes()">
+                <label for="Q1_4">흰색</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 text-center">
+                <input type="checkbox" id="Q1_5" name="Q1[]" value="검정" onchange="limitCheckboxes()">
+                <label for="Q1_5">검정</label>
+            </div>
+        </div>
     </div>
-    <div class="container"; style="font-size: larger;">
+    <div class="container text-center" style="font-size: larger;">
         <label for="Q2">의견:</label><br>
         <textarea id="Q2" name="Q2" rows="4" cols="50"></textarea>
     </div>
-    <div class="container">
+    <div class="container text-center">
         <button type="button" class="btn btn-outline-success" onclick="showResults()">제출</button>
     </div>
 
-    <div id="results" class="container" style="display: none; margin-top: 20px;">
+    <div id="results" class="container text-center" style="display: none; margin-top: 20px;">
         <h2>결과</h2>
         <p id="Q1Result"></p>
         <p id="Q2Result"></p>
