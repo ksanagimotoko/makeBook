@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>객체 반복 예제</title>
+<style>
+  /* 네모 상자 */
+    .box {
+    border: 1px solid black;
+    padding: 5px;
+    margin: 5px;
+    display: inline-block;
+    }
+</style>
+</head>
+<body>
+
+<h2>유니트 아이들</h2>
+
+<div id="ListEx2">
+
+</div>
+
+<script>
+// 샘플 객체 배열
+let 객체들 = [
+    { 이름: "민지", 직급: "임원" },
+    { 이름: "현석", 직급: "팀장" },
+    { 이름: "서하", 직급: "정회원" }
+];
+
+// 네모 상자를 추가할 요소 가져오기
+let myList = document.getElementById("ListEx2");
+
+// 객체 배열을 반복하면서
+객체들.forEach(function(객체) {
+  // 새로운 네모 상자 요소 생성
+    let box = document.createElement("div");
+    box.classList.add("box"); 
+  // "box" 클래스 추가
+
+  // 객체의 이름과 직급을 표시하는 텍스트 설정
+    let text = document.createElement("p");
+    text.textContent = 객체.이름 + " - " + 객체.직급;
+
+  // 네모 상자 안에 텍스트 추가
+    box.appendChild(text);
+
+  // 민지인 경우 핑크로 스타일 지정
+    if (객체.이름 === "민지") {
+    box.style.backgroundColor = "pink";
+    }
+  // 현석, 서하인 경우 해당색으로 스타일 지정
+    else if (객체.이름 === "현석") {
+    box.style.backgroundColor = "skyblue";
+    }
+    else if (객체.이름 === "서하") {
+    box.style.backgroundColor = "lightgreen";
+    }
+
+  // 네모 상자를 리스트에 추가
+    myList.appendChild(box);
+});
+</script>
+
+</body>
+</html>
