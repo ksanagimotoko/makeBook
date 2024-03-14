@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>퍼스널컬러</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <style>
+        .keyBlock {
+            display: block;
+        }
+        </style>
+
+</head>
+<body>
+    <div class="bbb"></div>
+    <button type="button" class="btn1 btn btn-outline-success" name="spring"> 봄 웜 </button>
+    <button type="button" class="btn2 btn btn-outline-primary" name="summer"> 여름 쿨 </button>
+    <button type="button" class="btn3 btn btn-outline-warning" name="fall"> 가을 웜 </button>
+    <button type="button" class="btn4 btn btn-outline-dark" name="winter"> 겨울 쿨 </button>
+
+    </div>
+
+    <div class="">
+    <p class="display"></p>
+    </div>
+
+    <script>
+        let keyList = {
+            btn1 : ['따뜻한 옐로 베이스의 피부 톤.', '노란빛이 도는 밝은 갈색 눈동자다.', '실버보다는 골드 계열의 액세서리가 더 잘 어울린다.', '명도와 채도가 높은 옷이 잘 어울린다.', '흑갈색이나 밝은 염색모가 잘 어울린다.'],
+            btn2 : ['피부에 붉은 기가 있다.', '장시간 햇빛에 노출되면 피부가 붉게 그을린다.', '눈동자와 헤어 컬러가 검은색이나 진한 갈색이다.', '골드보다 실버 액세서리가 잘 어울린다.', '아이보리보다 새하얀 화이트 컬러가 잘 맞는다.'],
+            btn3 : ['내추럴하거나 노란 기가 도는 피부 톤이다.', '모발과 눈동자 컬러가 브라운에 가깝다.', '피부 질감이나 머릿결이 매트한 편이다.', '실버보다 골드 계열의 액세서리가 잘 받는다.', '새하얀 화이트보다 크림이나 아이보리 화이트가 잘 어울린다.'],
+            btn4 : ['피부가 얇고 홍조가 없이 투명한 편이다.', '모발과 눈동자 컬러가 짙은 검은색이다.', '선명하고 또렷한 색상이 잘어울린다.', '골드보다 실버 악세서리가 잘 어울린다.', '노란기가 없는 차가운 색이 잘맞는다.']
+        };
+
+        document.querySelector('.btn1').addEventListener("click", function() {
+            displayKey("btn1");
+        });
+
+        document.querySelector('.btn2').addEventListener("click", function() {
+            displayKey("btn2");
+        });
+
+        document.querySelector('.btn3').addEventListener("click", function() {
+            displayKey("btn3");
+        });
+
+        document.querySelector('.btn4').addEventListener("click", function() {
+            displayKey("btn4");
+        });
+
+        function displayKey(buttonclass) {
+            let key = keyList[buttonclass];
+            document.querySelector('.display').innerHTML = "<div class='keyBlock'>" + key.join("<br>") + "</div>";
+        }
+    </script>
+</body>
+</html>
