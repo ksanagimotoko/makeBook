@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    table {
+        border-collapse: collapse;
+        width: 50%;
+      }
+      th, td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: center;
+      }
+    </style>
+</head>
+<body>
+    <h2>알파벳</h2>
+
+    <table>
+        <thead>
+          <tr>
+            <th>A</th>
+            <th>B</th>
+            <th>C</th>
+            <th>D</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <td class="cellA"></td>
+              <td class="cellB"></td>
+              <td class="cellC"></td>
+              <td class="cellD"></td>
+            </tr>
+        </tbody>
+    </table>
+    
+
+    <script>
+
+    const obj = {
+        a: ['apple', 'air', 'alarm'],
+        b: ['bear', 'bee'],
+        c: ['car', 'cook', 'cake', 'career'],
+        d: ['data', 'dear', 'doodle', 'dog']
+    };
+
+    const columns = Object.keys(obj);
+
+    // 각 셀에 하나씩 넣기
+    for (let i = 0; i < columns.length; i++) {
+        let value = obj[columns[i]];
+        let cellclass = '.cell' + columns[i].toUpperCase();
+        let cell = document.querySelector(cellclass);
+
+        for (let j = 0; j <value.length; j++) {
+            cell.innerText += value[j]+ ' ';
+            cell = cell.parentElement.nextElementSibling.querySelector(cellClass); // 다음 행의 같은 열 셀로 이동
+        }
+    } 
+
+    </script>
+
+
+</body>
+</html>
