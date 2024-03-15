@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BMI 계산기</title>
+</head>
+<style>
+    body {
+        background-color: black;
+        color: white;
+    }
+    .box {
+        border: 1px solid white;
+        color: rgb(255, 253, 253);
+        padding: 5px;
+        margin: 5px;
+        display: inline-block;
+    }
+</style>
+<body>
+<h2>체질량지수 BMI</h2>
+<div id="ListEx2"></div>
+</div>
+<!------------------------------------------------------------->
+<h2>BMI 계산기</h2>
+<h5 style="color: red;">내용을 입력하지 않을 시 임의 설정 값으로 게산됩니다.</h5>
+<!-- 이름 입력 -->
+<div>
+    <label for="name">이름: </label>
+    <input type="text" id="nameInput" name="name" placeholder="예: 홍길동">
+</div><br>
+<!-- 나이 입력 -->
+<div>
+    <label for="age">나이: </label>
+    <input type="number" id="ageInput" name="age" placeholder="예: 25">
+</div><br>
+<!-- 키 입력 -->
+<div>
+    <label for="height">키(cm): </label>
+    <input type="number" id="height" name="height" placeholder="예: 180">
+</div><br>
+<!-- 몸무게 입력 -->
+<div>
+    <label for="weight">몸무게(kg): </label>
+    <input type="number" id="weight" name="weight" placeholder="예: 70">
+</div><br>
+<!--결과 보는 버튼-->
+<button onclick="calculateBMI()">결과보기</button><br>
+<div id="result"></div>
+
+
+<!-- 새로고침버튼 -->
+<div id="RefreshButton" style="position: fixed; top: 200px; right: 20px;"> 
+    <button onclick="window.location.reload();" style="width: 50px; height: 50px; border-radius: 50%; background-color: #007bff; color: #fff; font-size: 16px;">↻</button>
+</div>
+<!------------------------------------------------------------------->
+<!--이미지 추가-->
+<h4 style="color: aqua;">올바른 식생활 지침</h4>
+<h5 style="color: white;">사진을 클릭하세요</h5>
+<img src="./image/BmiChart.png" style="display: block; width: 20%;" class="mx-auto" onclick="window.open(this.src)">
+
+
+<script>
+// 객체 배열
+let 객체들 = [
+    { 이름: "저체중", 지수: "0 ~ 18.5" },
+    { 이름: "정상", 지수: "18.5 ~ 23" },
+    { 이름: "과체중", 지수: "23 ~ 25" },
+    { 이름: "비만", 지수: "25.00 ~ " }
+];
+
+// 네모 상자를 추가할 요소 가져오기
+let myList = document.getElementById("ListEx2");
+
+// 객체 배열을 반복하면서
+객체들.forEach(function(객체) {
+  // 새로운 네모 상자 요소 생성
+    let box = document.createElement("div");
+    box.classList.add("box"); 
+  // "box" 클래스 추가
+
+  // 객체의 이름과 지수를 표시하는 텍스트 설정
+    let text = document.createElement("p");
+    text.textContent = 객체.이름 + " - " + 객체.지수;
+
+  // 네모 상자 안에 텍스트 추가
+    box.appendChild(text);
+
+
+  // 정상일 경우 스카이블루로 스타일 지정
+    if (객체.이름 === "저체중") {
+    box.style.backgroundColor = "skyblue";
+    }
+  // 그 외의 경우 해당색으로 스타일 지정
+    else if (객체.이름 === "정상") {
+    box.style.backgroundColor = "green";
+    }
+    else if (객체.이름 === "과체중") {
+    box.style.backgroundColor = "orange";
+    }
+    else if (객체.이름 === "비만") {
+    box.style.backgroundColor = "red";
+    }
+
+  // 네모 상자를 리스트에 추가
+    myList.appendChild(box);
+});
+
+// 입력된 키와 몸무게 가져오기
+function calculateBMI() {
+    let height = document.getElementById("height").value;
+    let weight = document.getElementById("weight").value;
+    let name = document.getElementById("nameInput").value;
+    let age = document.getElementById("ageInput").value;
+
+    // 값이 미입력된 경우 기본값으로 설정
+    if (name === "") {
+        name = "홍길동";
+    }
+    if (age === "") {
+        age = 25;
+    }
+    if (height === "") {
+        height = 180;
+    }
+    if (weight === "") {
+        weight = 70;
+    }
+
+    // 키를 미터로 변환
+    let heightInMeter = height / 100;
+
+    // BMI 계산
+    let bmi = weight / (heightInMeter * heightInMeter);
+
+    // BMI 결과를 result div에 표시
+    let resultDiv = document.getElementById("result");
+    resultDiv.innerHTML = "이름: " + name + "<br>나이: " + age + "<br>당신의 BMI 지수는 " + bmi.toFixed(2) + " 입니다.";
+
+    // 결과값
+    if (bmi < 18.5) {
+        resultDiv.innerHTML += "<br>저체중입니다.";
+    } else if (bmi >= 18.5 && bmi < 25) {
+        resultDiv.innerHTML += "<br>정상체중입니다.";
+    } else if (bmi >= 25 && bmi < 30) {
+        resultDiv.innerHTML += "<br>과체중입니다.";
+    } else {
+        resultDiv.innerHTML += "<br>비만입니다.";
+    }
+}
+//----------------------------------------------------
+
+</script>
+
+</body>
+</html>
+
