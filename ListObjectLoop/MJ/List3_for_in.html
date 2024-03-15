@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>객체 반복 예제</title>
+<style>
+/* 네모 상자 */
+.object-box {
+    border: 1px solid black;
+    padding: 10px;
+    margin-bottom: 5px;
+}
+</style>
+</head>
+<body>
+
+<h2>유니트 아이들</h2>
+
+<ul id="ListEx">
+</ul>
+
+<script>
+// 샘플 객체 배열
+let 객체들 = [
+    { 이름: "민지", 직급: "임원" },
+    { 이름: "현석", 직급: "팀장" },
+    { 이름: "서하", 직급: "정회원" },
+    { 이름: "현욱", 직급: "OB" }
+];
+
+// 리스트 아이템을 추가할 UL 요소 가져오기
+let myList = document.getElementById("ListEx");
+
+// '객체들' 객체의 각 속성을 반복하면서 각 속성의 이름을 'repeat'에 할당하고,
+// 해당 속성 값을 출력함, 'repeat'는 반복문이 실행될 때 마다 객체의 속성이름이됨
+for (let repeat in 객체들) {
+    let 객체 = 객체들[index];
+
+    // 새로운 리스트 아이템 요소 생성
+    let listItem = document.createElement("li");
+
+    // 새로운 div 요소 생성
+    let objectBox = document.createElement("div");
+    objectBox.className = "object-box"; // 클래스 추가
+
+    // 객체 글씨에 색 추가
+    if (객체.이름 === "민지") {
+        listItem.style.color = "pink";
+    }
+    if (객체.이름 === "현석") {
+        listItem.style.color = "skyblue";
+    }
+    if (객체.이름 === "서하") {
+        listItem.style.color = "green";
+    }
+    if (객체.이름 === "현욱") {
+        listItem.style.color = "orange";
+    }
+
+    // 리스트 아이템의 텍스트 내용 설정
+    objectBox.textContent = 객체.이름 + " - " + 객체.직급;
+
+    // div를 리스트 아이템에 추가
+    listItem.appendChild(objectBox);
+
+    // 리스트 아이템을 UL 요소에 추가
+    myList.appendChild(listItem);
+}
+</script>
+
+</body>
+</html>
