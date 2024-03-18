@@ -19,8 +19,8 @@
         <!--새로운 div 추가 공간-->
     </div>
 
-    <button onclick="addnew()"> new </button>
-    <button onclick="addnew2()"> old </button>
+    <button class="addnew"> new </button>
+    <button class="addnew2"> old </button>
 
     <script>
         /*
@@ -89,6 +89,9 @@
         document.querySelector('.container').appendChild(newdiv2);
 
        };
+
+       document.querySelector('.addnew').addEventListener('click', addnew);
+       document.querySelector('.addnew2').addEventListener('click', addnew2);
 
     </script>
     
