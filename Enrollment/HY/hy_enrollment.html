@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>토핑 추가!</title>
+
+    <style>
+
+        .list {
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+    
+    <input type="text" name="inputtxt" placeholder="원하는 토핑을 입력하세요.">
+    <button name="Btn"> 등록 </button>
+    <ul class="list">
+
+    </ul>
+
+    <script>
+
+        let count = 1; // 초기 순서 1로 설정
+
+        document.getElementsByName("Btn")[0].addEventListener("click", function () {
+            let inputtxt = document.getElementsByName("inputtxt")[0].value;
+
+            if (inputtxt.trim() !=="") { // 입력값이 공백이 아닐 경우에만 실행    
+                
+                let list = document.querySelector(".list");
+                let listitem = document.createElement("li");
+
+                listitem.textContent = count + ". " + inputtxt; // 순서 표기 방법
+                list.appendChild(listitem);
+
+                document.getElementsByName("inputtxt")[0].value = ""; // 입력창 비우기
+
+                count++; // 순번
+
+            } else {
+                alert("원하는 토핑을 입력하세요."); // 공백시 알림창
+            }
+        });
+    </script>
+</body>
+</html>
