@@ -10,6 +10,11 @@
         .list {
             list-style-type: none;
         }
+
+        .delBtn {
+            color: red;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -32,7 +37,7 @@
                 let list = document.querySelector(".list");
                 let listitem = document.createElement("li");
 
-                listitem.textContent = count + ". " + inputtxt; // 순서 표기 방법
+                listitem.innerHTML = count + ". " + inputtxt + '<span class="delBtn"> X </span>'; // 순서 표기 방법
                 list.appendChild(listitem);
 
                 document.getElementsByName("inputtxt")[0].value = ""; // 입력창 비우기
@@ -43,6 +48,24 @@
                 alert("원하는 토핑을 입력하세요."); // 공백시 알림창
             }
         });
+
+        //삭제
+        document.querySelector('.list').addEventListener('click', function(event) {
+            if (event.target.classList.contains('delBtn')) {
+                event.target.parentNode.remove();
+                resetCount(); //번호 초기화
+            }
+        });
+
+        //번호 초기화 함수
+        function resetCount () {
+            let listitemss = document.querySelectorAll('.list li');
+            count = 1;
+            listitemss.forEach(function(item) {
+                item.textContent = count + ". " + item.textCount.substring(item.textContent.indexOf(' ') + 1);
+                count++;
+            });
+        }
     </script>
 </body>
 </html>
